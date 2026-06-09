@@ -51,6 +51,8 @@ A **stuck log** shows no recent entries or an error at the last entry.
 **Step 5 — Restart the service**
 Stop the service. Wait **8–10 seconds**. Start the service.
 
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
+
 **Step 6 — Verify via Message Browser**
 Return to ABS → Message Browser. Confirm that the status of recent messages changes to **Processed**.
 Watch the log file in Notepad++ — new CronJob entries should appear within 1–2 minutes.

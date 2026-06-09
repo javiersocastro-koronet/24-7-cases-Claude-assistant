@@ -52,6 +52,8 @@ Locate the service named **"EDI Processing"** (may include customer code prefix)
 **Step 5 — Restart the service**
 Stop the service. Wait **8–10 seconds**. Start the service.
 
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
+
 **Step 6 — Watch the IN folder drain**
 Return to the `IN\` folder. Confirm that files are being picked up and moved to `OUT\`.
 The folder should begin draining within 1–2 minutes of the service starting.

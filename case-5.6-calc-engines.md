@@ -58,6 +58,8 @@ Locate all services named **"Realtime Calc"** and **"Pricelist Calc"** (there ma
 Wait ~10 seconds after all engines are stopped.
 Start ALL engines. Start them in sequence but without long delays between each — the goal is all engines running again.
 
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
+
 **Step 6 — Verify**
 Re-run:
 

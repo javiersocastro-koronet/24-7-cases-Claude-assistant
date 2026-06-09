@@ -48,6 +48,8 @@ Look for the following error signatures:
 
 **Step 4 — Restart the service (for "handle is invalid" or "memory full")**
 Stop the service. Wait **8–10 seconds**. Start the service.
+
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
 Watch the log in Notepad++ for new entries confirming activity.
 
 **Step 5 — If error was "memory was completely full": reset affected jobs in queue**

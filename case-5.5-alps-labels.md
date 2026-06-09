@@ -51,6 +51,8 @@ Status values:
 RDP to the ALPS server. Open **Windows Services** (services.msc).
 Locate the service named **"[Customer] Axerrio Print Job Processor"** (name includes customer code).
 Stop the service. Wait **8–10 seconds**. Start the service.
+
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
 Re-run the status query — jobs should begin moving from status 0 to status 1.
 
 **Step 5 — If jobs are status 1 but no physical output: restart Print Spooler**

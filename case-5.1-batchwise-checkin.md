@@ -37,6 +37,8 @@ Locate the service named **"Batchwise Check-in"** (or similar — the exact name
 
 **Step 4 — Restart the service**
 Stop the service. Wait **8–10 seconds**. Start the service.
+
+![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
 Do not restart immediately — the wait allows dependent processes to release handles.
 
 **Step 5 — Verify via Lot Identification Jobs**

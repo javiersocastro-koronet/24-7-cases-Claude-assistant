@@ -21,7 +21,7 @@ Follow in order. If the fix works at any step, confirm with the customer and clo
 
 **Step 1 — Identify the server**
 Query Confluence for the customer: https://vertical.atlassian.net/wiki/spaces/A/pages/6321869774/ABS+Services+locations+customers
-Look up the **ABS Windows Services** column (and the **EDI Processing** column if separately listed) for this customer.
+Look up the **ABS Windows Services** column for this customer. (Confluence does not have a separate EDI Processing column — ABS Windows Services is the correct one.)
 
 **Step 2 — Confirm the EDI folder path**
 The default EDI input folder is:
@@ -52,7 +52,7 @@ Locate the service named **"EDI Processing"** (may include customer code prefix)
 **Step 5 — Restart the service**
 Stop the service. Wait **8–10 seconds**. Start the service.
 
-![Stop, wait 8–10 seconds, Start](assets/common/start-stop-service.png)
+![Stop, wait 8–10 seconds, Start](assets/case-5.2/04-start-stop-edi.png)
 
 **Step 6 — Watch the IN folder drain**
 Return to the `IN\` folder. Confirm that files are being picked up and moved to `OUT\`.

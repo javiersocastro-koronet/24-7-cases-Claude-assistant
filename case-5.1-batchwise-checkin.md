@@ -41,25 +41,23 @@ Stop the service. Wait **8–10 seconds**. Start the service.
 In 99% of cases where the customer reports this symptom during early hours, this is all that is needed.
 
 **Step 5 — Verify it is working**
-After restarting, open the **Lot Identification Jobs** overview in ABS. The **timestamp and status columns** should start updating rapidly — changing every few seconds as the service picks up the backlog of jobs.
+After restarting, open the **Lot Identification Jobs** overview in ABS (Partij Identificatie Jobs). Click the icon shown below to open it:
 
-Status should change from **"none" or "entered" → "checked in"**.
+![Lot Identification Jobs overview — where to click and what to look for](assets/case-5.1/03-lot-identification-jobs.png)
+
+The **timestamp and status columns** should start updating rapidly — changing every few seconds as the service picks up the backlog. Status should change from **"none" or "entered" → "checked in" (Binnengemeld)**.
 
 Ask the customer: "Are labels coming out of the printer now?"
 - **Yes** → issue resolved. Log the call in Intercom and close.
 - **No** → continue to Step 6.
 
-You can also verify independently via database query while waiting for the customer:
+You can also verify independently via database query. Connect to the customer's SQL server via SSMS (see Confluence → SSMS Location column for the server name — e.g. for FCA: **AXE-SQL10**), then run:
 
 ```sql
-SELECT TOP 100 * FROM <ABS-db>.dbo.PartyIdentificationJob ORDER BY LotIdentificationJobKey DESC
+SELECT TOP 100 * FROM PartyIdentificationJob ORDER BY [Key] DESC
 ```
 
-If timestamp and status columns are NULL → the service was not running. After restart they will populate quickly.
-
-> ⚠️ **PENDING — confirm before using in a live call:**
-> Exact ABS database name for this customer. Replace `<ABS-db>` with the actual database name (e.g. `FCA_ABS` for FCA).
-> *Confirm with: Martijn | Added: 2026-06-08*
+If **RunnedTimestamp** is populated and timestamps are recent → service is running and processing. If all NULL → service was not running before restart.
 
 **Step 6 — Check the print queue**
 On the AST server, open **Print Management**. Check if labels are stuck in the print queue of the label printer.
@@ -97,9 +95,10 @@ If a customer says "no labels after checking in":
 1. Confluence → ABS Windows Services column → identify server
 2. RDP → services.msc → sort by Log On As → find Batchwise Check-in
 3. Stop → wait 8–10s → Start
-4. ABS → Lot Identification Jobs → watch timestamps and status update → ask customer if labels are printing
-5. If no → Print Management → check print queue → restart Print Spooler
-6. If still no → Case 5.7 (network diagnostics)
-7. If unresolved at 20 min → escalate to Tier 2
+4. ABS → Lot Identification Jobs → watch timestamps and status update (Binnengemeld) → ask customer if labels are printing
+5. Or verify via SSMS (Confluence → SSMS Location column) → `SELECT TOP 100 * FROM PartyIdentificationJob ORDER BY [Key] DESC` → check RunnedTimestamp populated
+6. If no → Print Management → check print queue → restart Print Spooler
+7. If still no → Case 5.7 (network diagnostics)
+8. If unresolved at 20 min → escalate to Tier 2
 
 \\<<

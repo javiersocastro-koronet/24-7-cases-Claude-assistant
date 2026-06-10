@@ -19,15 +19,22 @@
 
 Follow in order. If the fix works at any step, confirm with the customer and close.
 
-**Step 1 — Diagnose via the Message Browser in ABS**
-Open ABS and navigate to the **Message Browser** (Berichtenoverzicht).
+**Step 1 — Open ABS via the RA server and check the Message Browser**
+Open ABS via the customer's **RA server** (look up the **ABS** column in Confluence — e.g. SQF-RA01 for SQ Flora).
+In ABS: **Extra → Messages Browser** (Berichtenoverzicht).
+
+> ⚠️ **TIP:** Turn off **auto-refresh** before checking — it interferes with filtering.
+
+![Message Browser — where to find it and what to look for](assets/case-5.3/01-message-browser.png)
+
 Check the status of recent outbound messages:
-- **Processed** → service is healthy, issue may be elsewhere
-- **Inserted** or **To be processed** → service is stuck, proceed with restart
 
-> ⚠️ **TIP:** Turn off **auto-refresh** in the Message Browser before applying filters. If auto-refresh is on, the filter resets on each refresh and you cannot hold a filtered view.
-
-![Message Browser showing stuck messages](assets/case-5.3/01-message-browser.png)
+| Status | Meaning |
+|---|---|
+| **Processed** | Service is running — issue may be elsewhere (e.g. SMTP, recipient email). Escalate to Tier 2. |
+| **Inserted** | Job waiting — service not running. Continue to Step 2. |
+| **To be processed** | Job queued — service not running. Continue to Step 2. |
+| **Old timestamps, no recent processed jobs** | Service has likely stopped. Continue to Step 2. |
 
 **Step 2 — Identify the server**
 Query Confluence for the customer: https://vertical.atlassian.net/wiki/spaces/A/pages/6321869774/ABS+Services+locations+customers
